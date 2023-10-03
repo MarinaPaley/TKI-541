@@ -56,7 +56,7 @@ namespace Domain
                 return true;
             }
 
-            return this.Id.Equals(other.Id);
+            return this.Name.Equals(other.Name);
         }
 
         /// <inheritdoc/>

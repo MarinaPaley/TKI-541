@@ -33,4 +33,8 @@
     <AdditionalFiles Include="$(SolutionDir)_stylecop\tests.ruleset" Link="_stylecop\tests.ruleset" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>
