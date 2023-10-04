@@ -23,7 +23,7 @@ namespace Domain
             this.Id = Guid.NewGuid();
             this.Name = name.Trim() ?? throw new ArgumentNullException(nameof(name));
             this.FamilyName = familyName.Trim() ?? throw new ArgumentNullException(nameof(familyName));
-            this.SurName = surName;
+            this.SurName = string.IsNullOrEmpty(surName) ? null : surName;
         }
 
         /// <summary>
@@ -59,9 +59,9 @@ namespace Domain
                 return true;
             }
 
-            return this.Name.Equals(other.Name)
-                && this.FamilyName.Equals(other.FamilyName)
-                && (this.SurName is not null ? this.SurName.Equals(other.SurName) : true);
+            return this.Name!.Equals(other.Name!)
+                && this.FamilyName!.Equals(other.FamilyName!)
+                && (this.SurName is null || other.SurName is null || this.SurName!.Equals(other.SurName!));
         }
 
         /// <inheritdoc/>
