@@ -1,4 +1,4 @@
-﻿// <copyright file="Author.cs" company="Васильева М.А.">
+﻿// <copyright file="Authors.cs" company="Васильева М.А.">
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
 
@@ -21,8 +21,8 @@ namespace Domain
         public Author(string name, string familyName, string? surName = null)
         {
             this.Id = Guid.NewGuid();
-            this.Name = name.Trim() ?? throw new ArgumentNullException(nameof(name));
-            this.FamilyName = familyName.Trim() ?? throw new ArgumentNullException(nameof(familyName));
+            this.Name = name?.Trim() ?? throw new ArgumentNullException(nameof(name));
+            this.FamilyName = familyName?.Trim() ?? throw new ArgumentNullException(nameof(familyName));
             this.SurName = string.IsNullOrEmpty(surName) ? null : surName;
         }
 
@@ -45,6 +45,26 @@ namespace Domain
         /// Отчество.
         /// </summary>
         public string? SurName { get; init; }
+
+        /// <summary>
+        /// Рукописи.
+        /// </summary>
+        public ISet<Manuscript> Manuscripts { get; set; } = new HashSet<Manuscript>();
+
+        /// <summary>
+        /// Добавляем рукопись.
+        /// </summary>
+        /// <param name="manuscript">Рукопись.</param>
+        /// <returns><see langword="true"/> если книга была добавлена.</returns>
+        public bool AddBook(Manuscript manuscript)
+        {
+            if (manuscript is null)
+            {
+                throw new ArgumentNullException(nameof(manuscript));
+            }
+
+            return this.Manuscripts.Add(manuscript);
+        }
 
         /// <inheritdoc/>
         public bool Equals(Author? other)

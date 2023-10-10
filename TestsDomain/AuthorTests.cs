@@ -31,8 +31,8 @@ namespace TestsDomain
         [TestCase(null, null)]
         public void Ctor_WrongData_ThrowException(string? firstName, string? familyName)
         {
-            Assert.Throws<NullReferenceException>(
-                () => _ = new Author(name: firstName, familyName: familyName));
+            Assert.Throws<ArgumentNullException>(
+                () => _ = new Author(name: firstName!, familyName: familyName!));
         }
 
         [Test]
