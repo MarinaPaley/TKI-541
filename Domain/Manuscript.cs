@@ -5,6 +5,7 @@
 namespace Domain
 {
     using System;
+    using Staff.Extensions;
 
     /// <summary>
     /// Класс рукопись.
@@ -20,7 +21,7 @@ namespace Domain
         public Manuscript(string title, ISet<Author>? authors = null)
         {
             this.Id = Guid.NewGuid();
-            this.Title = string.IsNullOrEmpty(title?.Trim()) ?? throw new ArgumentNullException(nameof(title));
+            this.Title = title.TrimOrNull() ?? throw new ArgumentNullException(nameof(title));
             if (authors != null)
             {
                 foreach (var author in authors)

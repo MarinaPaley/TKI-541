@@ -5,6 +5,7 @@
 namespace Domain
 {
     using System;
+    using Staff.Extensions;
 
     /// <summary>
     /// Автор.
