@@ -24,7 +24,7 @@ namespace Domain
             this.Id = Guid.NewGuid();
             this.Name = name?.Trim() ?? throw new ArgumentNullException(nameof(name));
             this.FamilyName = familyName?.Trim() ?? throw new ArgumentNullException(nameof(familyName));
-            this.SurName = string.IsNullOrEmpty(surName) ? null : surName;
+            this.SurName = surName.IsNullOrEmpty() ? null : surName;
         }
 
         /// <summary>

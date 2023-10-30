@@ -16,12 +16,14 @@ namespace Domain
         /// Инициализирует новый экземпляр класса <see cref="Manuscript"/>.
         /// </summary>
         /// <param name="title"> Название.</param>
+        /// <param name="date"> Дата публикации. </param>
         /// <param name="authors">Авторы.</param>
         /// <exception cref="ArgumentNullException"> Если название <see langword="null"/>.</exception>
-        public Manuscript(string title, ISet<Author>? authors = null)
+        public Manuscript(string title, DateOnly date, ISet<Author>? authors = null)
         {
             this.Id = Guid.NewGuid();
             this.Title = title.TrimOrNull() ?? throw new ArgumentNullException(nameof(title));
+            this.Date = date;
             if (authors != null)
             {
                 foreach (var author in authors)
@@ -36,10 +38,11 @@ namespace Domain
         /// Инициализирует новый экземпляр класса <see cref="Manuscript"/>.
         /// </summary>
         /// <param name="title"> Название.</param>
+        /// <param name="date"> Дата публикации. </param>
         /// <param name="authors">Авторы.</param>
         /// <exception cref="ArgumentNullException"> Если название <see langword="null"/>.</exception>
-        public Manuscript(string title, params Author[] authors)
-            : this(title, new HashSet<Author>(authors))
+        public Manuscript(string title, DateOnly date, params Author[] authors)
+            : this(title, date, new HashSet<Author>(authors))
         {
         }
 
@@ -57,6 +60,11 @@ namespace Domain
         /// Список авторов.
         /// </summary>
         public ISet<Author> Authors { get; init; } = new HashSet<Author>();
+
+        /// <summary>
+        /// Дата публикации.
+        /// </summary>
+        public DateOnly Date { get; init; }
 
         /// <inheritdoc/>
         public bool Equals(Manuscript? other)
