@@ -18,7 +18,7 @@ namespace Domain
         public Publishing(string name, string? contact = null)
         {
             this.Id = Guid.NewGuid();
-            this.Name = name.Trim() ?? throw new ArgumentNullException(nameof(name));
+            this.Name = name?.Trim() ?? throw new ArgumentNullException(nameof(name));
             this.Contact = contact;
         }
 
@@ -40,7 +40,7 @@ namespace Domain
         /// <inheritdoc/>
         public override bool Equals(object? other)
         {
-            return other is Publishing && this.Equals((Publishing)other);
+            return other is Publishing publishing && this.Equals(publishing);
         }
 
         /// <inheritdoc/>
@@ -63,7 +63,6 @@ namespace Domain
         public override int GetHashCode() => this.Id.GetHashCode();
 
         /// <inheritdoc/>
-        public override string ToString() => $"{this.Name}";
-
+        public override string ToString() => this.Name;
     }
 }

@@ -4,7 +4,9 @@
 
 namespace TestsDomain
 {
+    using System;
     using Domain;
+    using NUnit.Framework;
 
     /// <summary>
     /// Класс тестов на <see cref="Publishing"/>.
@@ -21,7 +23,7 @@ namespace TestsDomain
         [Test]
         public void Ctor_NullName_ThrowException()
         {
-            Assert.Throws<NullReferenceException>(() => _ = new Publishing(null!));
+            Assert.Throws<ArgumentNullException>(() => _ = new Publishing(null!));
         }
 
         [Test]
@@ -35,7 +37,8 @@ namespace TestsDomain
             var actual = publishing.ToString();
 
             // Assert
-            Assert.That(expected!.Equals(actual), Is.True);
+            Assert.That(expected, Is.Not.Null);
+            Assert.That(expected, Is.EqualTo(actual));
         }
 
         [Test]
@@ -49,7 +52,7 @@ namespace TestsDomain
             var actual = publishing.Equals(other);
 
             // Assert
-            Assert.IsFalse(actual);
+            Assert.That(actual, Is.False);
         }
     }
 }

@@ -4,7 +4,9 @@
 
 namespace TestsDomain
 {
+    using System;
     using Domain;
+    using NUnit.Framework;
 
     /// <summary>
     /// Класс тестов на <see cref="Author"/>.
