@@ -5,7 +5,7 @@
 namespace Domain
 {
     using System;
-    using Staff.Extensions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Класс рукопись.
@@ -56,12 +56,8 @@ namespace Domain
         /// <inheritdoc/>
         public bool Equals(Book? other)
         {
-            if (ReferenceEquals(null, other) && other is null)
-            {
-                return false;
-            }
-
-            return this.Title.Equals(other.Title)
+            return other is not null
+                && this.Title.Equals(other.Title)
                 && this.Manuscripts.SetEquals(other.Manuscripts);
         }
 

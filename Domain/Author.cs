@@ -1,10 +1,11 @@
-﻿// <copyright file="Authors.cs" company="Васильева М.А.">
+﻿// <copyright file="Author.cs" company="Васильева М.А.">
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
 
 namespace Domain
 {
     using System;
+    using System.Collections.Generic;
     using Staff.Extensions;
 
     /// <summary>
@@ -59,12 +60,9 @@ namespace Domain
         /// <returns><see langword="true"/> если книга была добавлена.</returns>
         public bool AddBook(Manuscript manuscript)
         {
-            if (manuscript is null)
-            {
-                throw new ArgumentNullException(nameof(manuscript));
-            }
-
-            return this.Manuscripts.Add(manuscript);
+            return manuscript is null
+                ? throw new ArgumentNullException(nameof(manuscript))
+                : this.Manuscripts.Add(manuscript);
         }
 
         /// <inheritdoc/>
