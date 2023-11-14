@@ -7,7 +7,9 @@ namespace WebApi
     using System;
     using System.IO;
     using System.Reflection;
+    using DataAccess.Extensions;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
@@ -15,7 +17,7 @@ namespace WebApi
     /// <summary>
     /// Программа.
     /// </summary>
-    public class Program
+    public sealed class Program
     {
         /// <summary>
         /// Точка входа в программу.
@@ -45,6 +47,13 @@ namespace WebApi
                     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
                 });
+
+            _ = builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly());
+
+            // @NOTE: Косое, но зато понятное применени user-secrets, "а то сидим как..."
+            var connectionString = builder.Configuration.GetConnectionString("Default");
+            connectionString += $"Password={builder.Configuration["DatabasePassword"]};";
+            _ = builder.Services.AddDatabase(connectionString);
 
             var app = builder.Build();
 
