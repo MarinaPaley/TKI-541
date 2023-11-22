@@ -9,7 +9,6 @@ namespace Domain.Tests
     using NUnit.Framework;
 
     [TestFixture]
-    [Ignore("Логика пока не реализована.")]
     public sealed class ManuscriptTests
     {
         [Test]
