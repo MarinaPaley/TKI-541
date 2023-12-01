@@ -4,8 +4,14 @@
 
 namespace Domain
 {
+    using System;
+
+    /// <summary>
+    /// Полка.
+    /// </summary>
     public class Shelf : IComparable<Shelf>
     {
+        /// <inheritdoc/>
         public int CompareTo(Shelf? other)
         {
             throw new NotImplementedException();

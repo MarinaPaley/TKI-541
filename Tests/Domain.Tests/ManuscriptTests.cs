@@ -1,15 +1,15 @@
 ﻿// <copyright file="ManuscriptTests.cs" company="Васильева М.А.">
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
-namespace TestsDomain
+
+namespace Domain.Tests
 {
     using System;
     using Domain;
     using NUnit.Framework;
 
     [TestFixture]
-    [Ignore("Логика пока не реализована.")]
-    public class ManuscriptTests
+    public sealed class ManuscriptTests
     {
         [Test]
         public void Ctor_Valid_Success()

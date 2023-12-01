@@ -2,10 +2,21 @@
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
 
-internal class Program
+namespace Demo
 {
-    private static void Main(string[] args)
+    using System;
+
+    /// <summary>
+    /// Точка входа.
+    /// </summary>
+    internal class Program
     {
-        Console.WriteLine("Hello, World!");
+        /// <summary>
+        /// Точка входа.
+        /// </summary>
+        private static void Main()
+        {
+            Console.WriteLine("Hello, World!");
+        }
     }
 }

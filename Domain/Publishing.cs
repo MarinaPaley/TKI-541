@@ -4,6 +4,8 @@
 
 namespace Domain
 {
+    using System;
+
     /// <summary>
     /// Издательство.
     /// </summary>

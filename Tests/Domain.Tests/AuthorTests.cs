@@ -2,7 +2,7 @@
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
 
-namespace TestsDomain
+namespace Domain.Tests
 {
     using System;
     using Domain;
@@ -12,7 +12,7 @@ namespace TestsDomain
     /// Класс тестов на <see cref="Author"/>.
     /// </summary>
     [TestFixture]
-    public class AuthorTests
+    public sealed class AuthorTests
     {
         [Test]
         public void Ctor_ValidData_Success()

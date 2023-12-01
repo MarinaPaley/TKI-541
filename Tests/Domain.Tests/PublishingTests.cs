@@ -2,7 +2,7 @@
 // Copyright (c) Васильева М.А.. All rights reserved.
 // </copyright>
 
-namespace TestsDomain
+namespace Domain.Tests
 {
     using System;
     using Domain;
@@ -12,7 +12,7 @@ namespace TestsDomain
     /// Класс тестов на <see cref="Publishing"/>.
     /// </summary>
     [TestFixture]
-    public class PublishingTests
+    public sealed class PublishingTests
     {
         [Test]
         public void Ctor_ValdData_Success()
@@ -31,6 +31,7 @@ namespace TestsDomain
         {
             // Arrange
             var publishing = new Publishing("Лань");
+
             var expected = "Лань";
 
             // Act
@@ -46,6 +47,7 @@ namespace TestsDomain
         {
             // Arrange
             var publishing = new Publishing("Лань");
+
             var other = new Publishing("Не Лань");
 
             // Act
